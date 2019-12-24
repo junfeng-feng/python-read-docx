@@ -9,7 +9,7 @@ import traceback
 writeFileFlag = True
 testFlag = False
 directoryName = "/Users/desktop/Downloads/data20191202"  # all Data
-# directoryName = "/Users/desktop/Downloads/docx_test"
+#directoryName = "/Users/desktop/Downloads/docx_test"
 
 selectedList = ["√", "0052", "F0FE", "F0A2", "003C3A24", "007752F5", "001C42A3", "000A5B43"]
 class Element():
@@ -60,7 +60,8 @@ def getTextin(text):
 def isSelected(paragrahObj):
     global selectedList
     for select in selectedList:
-        if paragrahObj._element.xml.find(select) != -1:
+        if paragrahObj._element.xml.find('''"'''+select+'''"''') != -1:
+            #print(paragrahObj._element.xml + "\n"+select+"12323")
             return True
         
     # 纯方框没选中
@@ -68,7 +69,6 @@ def isSelected(paragrahObj):
         # 未选中
         return False
 
-    
 def multiSelect(pList):
     text = ""
     for p in pList:
